@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
