@@ -1,6 +1,6 @@
-import { Perfil } from './perfil';
+import { Perfil } from "./perfil";
 
-export interface UserDetail {
+export interface UserDto {
   id?: number;
   name?: string;
   lastName?: string;
@@ -8,7 +8,6 @@ export interface UserDetail {
   phone?: string;
   isActive?: boolean;
   profiles?: Perfil[];
-  password?: string;
   initialDate?: Date;
   updateDate?: Date;
 }
