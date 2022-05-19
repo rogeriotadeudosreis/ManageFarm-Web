@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: UserListComponent },
+  { path: '', component: UserLoginComponent },
   { path: 'new', component: UserFormComponent },
   { path: 'login', component: UserLoginComponent }
 ];

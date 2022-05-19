@@ -12,14 +12,15 @@ import { UserService } from './../../services/user.service';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
+  
   datasource = new MatTableDataSource<UserDto>([]);
-
   usuarios: UserDto[] = [];
+  
   displayedColumns = [
     'name',
     'username',
     'isActive',
-    'profiles',
+    'profile',
     'initialDate',
     'updateDate',
     'actions',

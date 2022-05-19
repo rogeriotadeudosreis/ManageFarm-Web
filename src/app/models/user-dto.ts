@@ -7,7 +7,7 @@ export interface UserDto {
   username?: string;
   phone?: string;
   isActive?: boolean;
-  profiles?: Perfil[];
+  profile: Perfil;
   initialDate?: Date;
   updateDate?: Date;
 }

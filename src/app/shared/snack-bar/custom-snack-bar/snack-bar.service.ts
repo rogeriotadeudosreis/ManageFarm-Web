@@ -25,16 +25,16 @@ export class SnackBarService {
   }
 
   public showAlert(mensagem: string): void {
-      this.show(mensagem, SnackBarType.ALERT, 10000);
+      this.show(mensagem, SnackBarType.ALERT, 3000);
   }
 
   public showError(mensagem: string, error: ApiError): void {
       if (error != null && error.errors && error.errors.length > 0 ) {
           let errorMessage = '';
           error.errors.forEach(item => errorMessage += `${item}\n`);
-          this.show(errorMessage, SnackBarType.ERROR, 10000);
+          this.show(errorMessage, SnackBarType.ERROR, 3000);
       } else {
-          this.show(mensagem, SnackBarType.ERROR, 10000);
+          this.show(mensagem, SnackBarType.ERROR, 3000);
       }
   }
 

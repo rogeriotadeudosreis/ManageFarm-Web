@@ -1,36 +1,56 @@
 <mat-card>
-    <mat-toolbar color="grey">Manter Usuários</mat-toolbar>
+    <mat-toolbar>Manter Usuários</mat-toolbar>
 </mat-card>
 
 <mat-card>
   <mat-card-content>
 
-      <form [formGroup]="formUser">
+      <form [formGroup]="formUser" class="min-width">
           <mat-form-field class="full-width">
               <input matInput placeholder="Nome" type="text" formControlName="name">
+              <mat-error>Campo obrigatório</mat-error>
             </mat-form-field> 
             
             <mat-form-field class="full-width">
                 <input matInput placeholder="Sobrenome" type="text" formControlName="lastName">
+                <mat-error>Campo obrigatório</mat-error>
             </mat-form-field> 
             
             <mat-form-field class="full-width">
                 <input matInput placeholder="Email" type="text" formControlName="userName">
+                <mat-error>Campo obrigatório</mat-error>
             </mat-form-field> 
             
             <mat-form-field class="full-width">
                 <input matInput placeholder="Senha" type="text" formControlName="password">
+                <mat-error>Campo obrigatório</mat-error>
             </mat-form-field> 
             
             <mat-form-field class="full-width">
                 <input matInput placeholder="Telefone" type="text" formControlName="phone">
-            </mat-form-field>             
+                <mat-error>Campo obrigatório</mat-error>
+            </mat-form-field> 
+            
+            <mat-form-field class="mat-select-width">
+                <mat-label>Perfil</mat-label>
+                <mat-select formControlName="profile" required>
+                    <mat-option value="null"></mat-option>
+                    <mat-option value="administrador">Administrador</mat-option>
+                    <mat-option value="cliente">Cliente</mat-option>
+                    <mat-option value="usuario">Usuário</mat-option>
+                </mat-select>
+                <mat-error>Seleção obrigatória</mat-error>
+            </mat-form-field>
         </form>
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-raised-button color="primary">Salvar</button>
-        <button mat-raised-button>Cancelar</button>
+        <div class="buttons">
+            <button mat-raised-button color="primary"  (click)="onSave()">Salvar</button>
+            <button mat-raised-button (click)="onCancel()">Cancelar</button>
+        </div>
     </mat-card-actions>
 </mat-card>
+
+<!-- [disabled]="!formUser.valid" -->
     

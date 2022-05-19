@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, catchError, of, delay, first } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { User } from '../models/user';
 
 import { environment } from './../../environments/environment';
 import { UserDto } from './../models/user-dto';
@@ -17,5 +18,10 @@ export class UserService {
     return this.httpClient
       .get<UserDto[]>(`${this.baseUrl}/listar`)
       .pipe(map((response) => response));
+  }
+
+  save(user: User): Observable<User> {
+    console.log(JSON.stringify(user));
+    return this.httpClient.post(`${this.baseUrl}/criar`, user);
   }
 }
