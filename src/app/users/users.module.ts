@@ -9,6 +9,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { UserFormComponent } from './user-form/user-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     AppMaterialModule,
     CdkTableModule,
     MatIconModule,
+    ReactiveFormsModule
   ],
 })
 export class UsersModule {}
