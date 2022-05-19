@@ -7,15 +7,15 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Inicio</button>
       </mat-menu>
-    <span>ManageFarm - Gerenciamento</span>
+    <span>{{titleToolBar}}</span>
     <span class="toolbar-spacer"></span>
 
     <!-- menu usuário -->
-    <button mat-button [matMenuTriggerFor]="usuario">
+    <button mat-button [matMenuTriggerFor]="usuario" >
       <mat-icon>account_box</mat-icon>
     </button>
     <mat-menu #usuario="matMenu">
-      <button mat-menu-item>Logar</button>
+      <button mat-menu-item (click)="onLogin()">Logar</button>
     </mat-menu>
 
     <!-- menu sair -->

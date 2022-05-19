@@ -1,0 +1,18 @@
+::ng-deep .error {
+    background-color: #be4740 !important;
+}
+
+::ng-deep .alert {
+    background-color: #EBC345 !important;
+    strong, mat-icon{
+        text-shadow: 1px 1px #A7A7A7;
+    }
+}
+
+::ng-deep .success {
+    background-color: #7dba69 !important;
+}
+
+strong {
+    white-space: pre-line;
+}
