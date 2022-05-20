@@ -1,3 +1,5 @@
+import { SnackBarService } from 'src/app/shared/snack-bar/custom-snack-bar/snack-bar.service';
+import { UserService } from 'src/app/services/user.service';
 import { UserLogin } from './../../models/user-login';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +16,9 @@ export class UserLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private snackBarService: SnackBarService
   ) {
     this.form = this.formBuilder.group({
       username: [null, [Validators.required]],
@@ -26,7 +30,14 @@ export class UserLoginComponent implements OnInit {
 
   onLogin() {
     const user = this.form.getRawValue() as UserLogin;
-    console.log(user);
+    this.userService.login(user).subscribe(
+      () => {
+        this.snackBarService.showSuccess('Login com sucesso!');
+      },
+      (err) => {
+        this.snackBarService.showError('Erro ao salvar este registro', err);
+      }
+    );
   }
 
   onCancel() {

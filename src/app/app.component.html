@@ -1,30 +1,32 @@
-<p>
-  <mat-toolbar color="primary">
+<div class="fundo">
+  <p>
+    <mat-toolbar class="toolbar">
       <!-- menu sair -->
-    <button mat-button [matMenuTriggerFor]="menu">
+      <button mat-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Inicio</button>
       </mat-menu>
-    <span>{{titleToolBar}}</span>
-    <span class="toolbar-spacer"></span>
+      <span>{{ titleToolBar }}</span>
+      <span class="toolbar-spacer"></span>
 
-    <!-- menu usuário -->
-    <button mat-button [matMenuTriggerFor]="usuario">
-      <mat-icon>account_box</mat-icon>
-    </button>
-    <mat-menu #usuario="matMenu">
-      <button mat-menu-item (click)="onLogin()">Logar</button>
-    </mat-menu>
+      <!-- menu usuário -->
+      <button mat-button [matMenuTriggerFor]="usuario">
+        <mat-icon>account_box</mat-icon>
+      </button>
+      <mat-menu #usuario="matMenu">
+        <button mat-menu-item routerLink="/login">Logar</button>
+      </mat-menu>
 
-    <!-- menu sair -->
-    <button mat-button [matMenuTriggerFor]="sair">
-      <mat-icon>exit_to_app</mat-icon>
-    </button>
-    <mat-menu #sair="matMenu">
-      <button mat-menu-item>Sair</button>
-    </mat-menu>
-  </mat-toolbar>
-</p>
-<router-outlet></router-outlet>
+      <!-- menu sair -->
+      <button mat-button [matMenuTriggerFor]="sair">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+      <mat-menu #sair="matMenu">
+        <button mat-menu-item>Sair</button>
+      </mat-menu>
+    </mat-toolbar>
+  </p>
+  <router-outlet></router-outlet>
+</div>

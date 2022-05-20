@@ -1,4 +1,3 @@
-import { UsersRoutingModule } from './users/users-routing.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -9,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
+import { UsersRoutingModule } from './users/users-routing.module';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { AppMaterialModule } from './shared/app-material/app-material.module';
     AppMaterialModule,
     CommonModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    UsersModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,13 +1,17 @@
 mat-card {
   border-radius: 10px;
   max-width: 30%;
-  margin: 2em auto;
+  margin: 10em auto;
   text-align: center;
 }
 
   .toolbar {
+    justify-content: center;
+    color: white;
+    font-size: 25px;
     border-radius: 5px;
-    background-color: green;
+    background-color: #a17464;
+    margin-bottom: 25px;
   }
 
 .full-width {
@@ -23,11 +27,19 @@ mat-card {
   width: 40%;
 }
 
-// .buttons {
-//   text-align: end;
-// }
+.buttons {
+}
 
-.span-cadastra-se {
+.button {
+  width: 130px;
+  height: 40px;
+  color: white;
+  background-color: #2196F3;
+}
+
+.span-register {
+  color: gray;
   text-align: center;
   font-weight: 500;
 }
+

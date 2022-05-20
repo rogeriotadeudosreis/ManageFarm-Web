@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-toolbar>Manter Usuários</mat-toolbar>
+    <mat-toolbar class="toolbar">Cadastrar Usuários</mat-toolbar>
 </mat-card>
 
 <mat-card>
@@ -46,8 +46,8 @@
 
     <mat-card-actions>
         <div class="buttons">
-            <button mat-raised-button color="primary"  (click)="onSave()">Salvar</button>
-            <button mat-raised-button (click)="onCancel()">Cancelar</button>
+            <button class="button" mat-raised-button (click)="onSave()">Salvar</button>
+            <button mat-raised-button routerLink="/usuarios">Cancelar</button>
         </div>
     </mat-card-actions>
 </mat-card>

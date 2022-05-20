@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,7 +20,8 @@ export class UserFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackBarService,
+    private router: Router
   ) {
     this.formUser = this.formBuilder.group({
       id: [null],
@@ -45,15 +47,12 @@ export class UserFormComponent implements OnInit {
         () => {
           this.snackBarService.showSuccess('Registro salvo com sucesso!.');
           this.formUser.reset();
+          this.router.navigate(['/login'])
         },
         (err) => {
           this.snackBarService.showError('Erro ao salvar este registro', err);
         }
       );
     }
-  }
-
-  onCancel() {
-    this.formUser.reset();
   }
 }
