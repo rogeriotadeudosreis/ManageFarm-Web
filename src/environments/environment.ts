@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL_MANAGEFARM_API:  'http://localhost:8080',
+  URL_MANAGEFARM_API:  'http://localhost:4200/api',
 };
 
 /*
