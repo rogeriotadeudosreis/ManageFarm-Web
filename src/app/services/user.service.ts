@@ -1,3 +1,4 @@
+import { TokenService } from './toke.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, tap, windowTime } from 'rxjs';
@@ -14,7 +15,10 @@ export class UserService {
   private readonly baseUrl = `${environment.URL_MANAGEFARM_API}/api/user`;
   private readonly baseUrlLogin = `${environment.URL_MANAGEFARM_API}`;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private tokenService: TokenService
+  ) {}
 
   read(): Observable<UserDto[]> {
     return this.httpClient
@@ -32,10 +36,11 @@ export class UserService {
     return this.httpClient.post(`${this.baseUrlLogin}/auth`, user).pipe(
       map((res) => {
         const authToken: any = res;
-        window.localStorage.setItem('authToken', authToken.token)
+        this.tokenService.setToken(authToken.token);
 
-
-        console.log(`User: ${user.username} autenticated with token:` + authToken.token);
+        console.log(
+          `User: ${user.username} autenticated with token:` + authToken.token
+        );
       })
     );
   }
