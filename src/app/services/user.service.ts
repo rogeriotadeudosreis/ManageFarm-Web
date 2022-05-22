@@ -1,11 +1,11 @@
-import { UserLogin } from './../models/user-login';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { User } from '../models/user';
+import { map, Observable, tap, windowTime } from 'rxjs';
 
+import { User } from '../models/user';
 import { environment } from './../../environments/environment';
 import { UserDto } from './../models/user-dto';
+import { UserLogin } from './../models/user-login';
 
 @Injectable({
   providedIn: 'root',
@@ -26,9 +26,17 @@ export class UserService {
     console.log(JSON.stringify(user));
     return this.httpClient.post(`${this.baseUrl}/criar`, user);
   }
-  
-  login(user: UserLogin): Observable<UserLogin> {
+
+  login(user: UserLogin) {
     console.log(JSON.stringify(user));
-    return this.httpClient.post(`${this.baseUrlLogin}/auth`, user);
+    return this.httpClient.post(`${this.baseUrlLogin}/auth`, user).pipe(
+      map((res) => {
+        const authToken: any = res;
+        window.localStorage.setItem('authToken', authToken.token)
+
+
+        console.log(`User: ${user.username} autenticated with token:` + authToken.token);
+      })
+    );
   }
 }
