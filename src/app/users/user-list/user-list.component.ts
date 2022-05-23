@@ -41,7 +41,7 @@ export class UserListComponent implements OnInit {
       (resposta: any) => {
         this.usuarios = resposta.content;
         this.datasource = new MatTableDataSource(this.usuarios);
-        this.snackbarService.showSuccess('Registro carregados com sucesso!');
+        // this.snackbarService.showSuccess('Registro carregados com sucesso!');
       },
       (err) => {
         this.snackbarService.showError(

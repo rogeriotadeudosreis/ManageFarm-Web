@@ -1,5 +1,9 @@
+import { UserDtoLogado } from './models/user-dto-logado';
+import { UserService } from 'src/app/services/user.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { UserDto } from './models/user-dto';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +12,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'managefarm-web';
-  titleToolBar = 'ManageFarm - Gerenciamento'
+  titleToolBar = 'ManageFarm - Gerenciamento';
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  user$: Observable<UserDtoLogado>;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {
+    this.user$ = userService.getUser();
+  }
 
   onLogin() {
     this.router.navigate(['login'], { relativeTo: this.route });
+  }
+
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['']);
   }
 }

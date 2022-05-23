@@ -45,9 +45,9 @@ export class UserFormComponent implements OnInit {
       const user = this.formUser.getRawValue() as User;
       this.userService.save(user).subscribe(
         () => {
-          this.snackBarService.showSuccess('Registro salvo com sucesso!.');
+          this.snackBarService.showSuccess('Registro salvo com sucesso'!);
           this.formUser.reset();
-          this.router.navigate(['/login'])
+          this.router.navigate([''])
         },
         (err) => {
           this.snackBarService.showError('Erro ao salvar este registro', err);

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarDismiss } from '@angular/material/snack-bar';
 import { ApiError } from 'src/app/models/api-error';
 
 import { CustomSnackBarComponent } from './custom-snack-bar.component';

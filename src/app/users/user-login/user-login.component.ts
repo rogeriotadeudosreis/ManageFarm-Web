@@ -30,11 +30,15 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onLogin() {
+    if (!this.form.valid) {
+      this.snackBarService.showAlert('Existem campos não preenchidos. Preencha os mesmo por favor.')
+    }
     const user = this.form.getRawValue() as UserLogin;
     this.userService.login(user).subscribe(
       () => {
-        this.snackBarService.showSuccess('Login com sucesso!');
+        // this.snackBarService.showSuccess('Login com sucesso!');
         this.form.reset();
+        this.router.navigate(['/usuarios'])
       },
       (err) => {
         this.snackBarService.showError('Erro ao salvar este registro', err);

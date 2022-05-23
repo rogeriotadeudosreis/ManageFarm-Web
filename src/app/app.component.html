@@ -12,20 +12,28 @@
       <span class="toolbar-spacer"></span>
 
       <!-- menu usuário -->
-      <button mat-button [matMenuTriggerFor]="usuario">
+      <button
+        *ngIf="user$ | async as user; else login"
+        mat-button >
         <mat-icon>account_box</mat-icon>
+        <a style="margin-left: 5px">{{ user.sub }}</a>
       </button>
-      <mat-menu #usuario="matMenu">
-        <button mat-menu-item routerLink="/login">Logar</button>
-      </mat-menu>
+
+      <ng-template #login>
+        <span>
+          <span>
+          <a routerLink="" style="margin-left: 5px; font-size: 16px; color: white;"> 
+              Please, login!
+            </a>
+          </span>
+        </span>
+      </ng-template>
 
       <!-- menu sair -->
-      <button mat-button [matMenuTriggerFor]="sair">
+      <button mat-button (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
       </button>
-      <mat-menu #sair="matMenu">
-        <button mat-menu-item>Sair</button>
-      </mat-menu>
+    
     </mat-toolbar>
   </p>
   <router-outlet></router-outlet>
