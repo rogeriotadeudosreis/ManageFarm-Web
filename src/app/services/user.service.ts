@@ -21,6 +21,7 @@ export class UserService {
     iss: '',
     sub: '',
   });
+  private userName?: string;
 
   constructor(
     private httpClient: HttpClient,
@@ -58,16 +59,24 @@ export class UserService {
   private decodeAndNotify() {
     const token: any = this.tokenService.getToken();
     const userLogado = jwt_decode(token) as UserDtoLogado;
+    this.userName = userLogado.sub;
     this.userSubject.next(userLogado);
-    console.log('Token decodificado: ', userLogado);
   }
 
   getUser() {
     return this.userSubject.asObservable();
   }
 
-  logout(){
+  logout() {
     this.tokenService.removeToken();
     this.userSubject.next(null!);
+  }
+
+  isLogged() {
+    return this.tokenService.hasToken();
+  }
+
+  getUserName(){
+    return this.userName;
   }
 }

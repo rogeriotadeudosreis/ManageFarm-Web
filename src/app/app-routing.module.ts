@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './services/authGuard';
 
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
@@ -9,7 +10,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
 
   { path: 'new', component: UserFormComponent },
-  { path: 'login', component: UserLoginComponent },
+  { path: 'login', component: UserLoginComponent, canActivate: [AuthGuard] },
   { path: 'usuarios', component: UserListComponent },
 
   // {
