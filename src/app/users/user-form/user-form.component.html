@@ -17,7 +17,7 @@
             </mat-form-field> 
             
             <mat-form-field class="full-width">
-                <input matInput placeholder="Email" type="text" formControlName="userName">
+                <input matInput placeholder="Email" type="text" formControlName="username">
                 <mat-error>Campo obrigatório</mat-error>
             </mat-form-field> 
             
@@ -32,15 +32,21 @@
             </mat-form-field> 
             
             <mat-form-field class="mat-select-width">
-                <mat-label>Perfil</mat-label>
-                <mat-select formControlName="profile" required>
-                    <mat-option value="null"></mat-option>
-                    <mat-option value="1">Administrador</mat-option>
-                    <mat-option value="2">Cliente</mat-option>
-                    <mat-option value="3">Usuário</mat-option>
+                <mat-label>Selecione o Perfil do Usuário</mat-label>
+                <mat-select formControlName="profiles" required [(ngModel)]="profileSelected">
+                    <mat-option value=""></mat-option>
+                    <mat-option value="ADMIN">Administrador</mat-option>
+                    <mat-option value="CLIENTE">Cliente</mat-option>
+                    <mat-option value="USUARIO">Usuário</mat-option>
                 </mat-select>
                 <mat-error>Seleção obrigatória</mat-error>
             </mat-form-field>
+            
+                <button [disabled]="!profileSelected" mat-raised-button style="margin-left: 20px;" 
+                (click)="addProfiles(profileSelected)">
+                    <mat-icon>add</mat-icon>
+                </button>
+
         </form>
     </mat-card-content>
 

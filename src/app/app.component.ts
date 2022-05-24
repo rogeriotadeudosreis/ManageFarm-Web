@@ -1,9 +1,9 @@
-import { UserDtoLogado } from './models/user-dto-logado';
-import { UserService } from 'src/app/services/user.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserDto } from './models/user-dto';
+import { UserService } from 'src/app/services/user.service';
+
+import { UserDtoLogado } from './models/user-dto-logado';
 
 @Component({
   selector: 'app-root',

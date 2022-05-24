@@ -12,10 +12,10 @@
       <span class="toolbar-spacer"></span>
 
       <!-- menu usuário -->
-      <button
+      <button 
         *ngIf="user$ | async as user; else login"
         mat-button >
-        <mat-icon>account_box</mat-icon>
+        <mat-icon >account_box</mat-icon>
         <a style="margin-left: 5px">{{ user.sub }}</a>
       </button>
 

@@ -16,6 +16,8 @@ import { User } from './../../models/user';
 export class UserFormComponent implements OnInit {
   formUser: FormGroup;
   dataSourceProfiles = new MatTableDataSource<Perfil[]>([]);
+  profileArraySelected: Perfil[] = [];
+  profileSelected: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,32 +29,40 @@ export class UserFormComponent implements OnInit {
       id: [null],
       name: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
-      userName: ['', [Validators.required, Validators.minLength(11)]],
+      username: ['', [Validators.required, Validators.minLength(11)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       phone: ['', [Validators.required]],
-      profile: ['', [Validators.required]],
+      profiles: ['', [Validators.required]],
     });
   }
 
   ngOnInit(): void {}
 
-  onSave() {
-    if (this.formUser.invalid) {
-      this.snackBarService.showAlert(
-        'O formulário possui campos obrigatório(s) não preenchidos.'
-      );
-    } else {
-      const user = this.formUser.getRawValue() as User;
-      this.userService.save(user).subscribe(
-        () => {
-          this.snackBarService.showSuccess('Registro salvo com sucesso'!);
-          this.formUser.reset();
-          this.router.navigate([''])
-        },
-        (err) => {
-          this.snackBarService.showError('Erro ao salvar este registro', err);
-        }
-      );
+  addProfiles(perfil: any): void {
+    if (this.profileSelected != undefined && this.profileSelected !== '') {
+      this.profileArraySelected.push(this.profileSelected);
     }
+    this.profileSelected = "Selecione o Perfil do Usuário"
+  }
+
+  onSave() {
+    // if (this.formUser.invalid) {
+    this.snackBarService.showAlert(
+      'O formulário possui campos obrigatório(s) não preenchidos.'
+    );
+    // } else {
+    const user = this.formUser.getRawValue() as User;
+    user.profiles = this.profileArraySelected;
+    this.userService.save(user).subscribe(
+      () => {
+        this.snackBarService.showSuccess('Registro salvo com sucesso'!);
+        this.formUser.reset();
+        this.router.navigate(['']);
+      },
+      (err) => {
+        this.snackBarService.showError('Erro ao salvar este registro', err);
+      }
+    );
+    // }
   }
 }

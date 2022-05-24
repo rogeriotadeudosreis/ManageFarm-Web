@@ -7,7 +7,7 @@ export interface User {
   username?: string;
   phone?: string;
   isActive?: boolean;
-  profiles?: Perfil;
+  profiles?: Perfil[];
   password?: string;
   initialDate?: Date;
   updateDate?: Date;
