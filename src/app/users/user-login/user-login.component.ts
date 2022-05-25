@@ -38,7 +38,7 @@ export class UserLoginComponent implements OnInit {
       () => {
         // this.snackBarService.showSuccess('Login com sucesso!');
         this.form.reset();
-        this.router.navigate(['/usuarios'])
+        this.router.navigate(['/home'])
       },
       (err) => {
         this.snackBarService.showError('Erro ao salvar este registro', err);

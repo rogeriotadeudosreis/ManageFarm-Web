@@ -1,40 +1,4 @@
-<div class="fundo">
-  <p>
-    <mat-toolbar class="toolbar">
-      <!-- menu sair -->
-      <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Inicio</button>
-      </mat-menu>
-      <span>{{ titleToolBar }}</span>
-      <span class="toolbar-spacer"></span>
-
-      <!-- menu usuário -->
-      <button 
-        *ngIf="user$ | async as user; else login"
-        mat-button >
-        <mat-icon >account_box</mat-icon>
-        <a style="margin-left: 5px">{{ user.sub }}</a>
-      </button>
-
-      <ng-template #login>
-        <span>
-          <span>
-          <a routerLink="" style="margin-left: 5px; font-size: 16px; color: white;"> 
-              Please, login!
-            </a>
-          </span>
-        </span>
-      </ng-template>
-
-      <!-- menu sair -->
-      <button mat-button (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
-      </button>
-    
-    </mat-toolbar>
-  </p>
-  <router-outlet></router-outlet>
-</div>
+<app-header></app-header>
+<app-nav></app-nav>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

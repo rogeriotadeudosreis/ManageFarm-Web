@@ -1,62 +1,108 @@
 <mat-card>
-    <mat-toolbar class="toolbar">Cadastrar Usuários</mat-toolbar>
+  <mat-toolbar class="toolbar">Cadastrar Usuários</mat-toolbar>
 </mat-card>
 
 <mat-card>
   <mat-card-content>
+    <form [formGroup]="formUser" class="min-width">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nome" type="text" formControlName="name" />
+        <mat-error>Campo obrigatório</mat-error>
+      </mat-form-field>
 
-      <form [formGroup]="formUser" class="min-width">
-          <mat-form-field class="full-width">
-              <input matInput placeholder="Nome" type="text" formControlName="name">
-              <mat-error>Campo obrigatório</mat-error>
-            </mat-form-field> 
-            
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Sobrenome" type="text" formControlName="lastName">
-                <mat-error>Campo obrigatório</mat-error>
-            </mat-form-field> 
-            
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Email" type="text" formControlName="username">
-                <mat-error>Campo obrigatório</mat-error>
-            </mat-form-field> 
-            
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Senha" type="text" formControlName="password">
-                <mat-error>Campo obrigatório</mat-error>
-            </mat-form-field> 
-            
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Telefone" type="text" formControlName="phone">
-                <mat-error>Campo obrigatório</mat-error>
-            </mat-form-field> 
-            
-            <mat-form-field class="mat-select-width">
-                <mat-label>Selecione o Perfil do Usuário</mat-label>
-                <mat-select formControlName="profiles" required [(ngModel)]="profileSelected">
-                    <mat-option value=""></mat-option>
-                    <mat-option value="ADMIN">Administrador</mat-option>
-                    <mat-option value="CLIENTE">Cliente</mat-option>
-                    <mat-option value="USUARIO">Usuário</mat-option>
-                </mat-select>
-                <mat-error>Seleção obrigatória</mat-error>
-            </mat-form-field>
-            
-                <button [disabled]="!profileSelected" mat-raised-button style="margin-left: 20px;" 
-                (click)="addProfiles(profileSelected)">
-                    <mat-icon>add</mat-icon>
-                </button>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Sobrenome"
+          type="text"
+          formControlName="lastName"
+        />
+        <mat-error>Campo obrigatório</mat-error>
+      </mat-form-field>
 
-        </form>
-    </mat-card-content>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Email"
+          type="text"
+          formControlName="username"
+        />
+        <mat-error>Campo obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Senha"
+          type="text"
+          formControlName="password"
+        />
+        <mat-error>Campo obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Telefone"
+          type="text"
+          formControlName="phone"
+        />
+        <mat-error>Campo obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mat-select-width">
+        <mat-label>Selecione o Perfil do Usuário</mat-label>
+        <mat-select formControlName="profiles" required [(ngModel)]="profileSelected">
+          <mat-option value=""></mat-option>
+          <mat-option *ngFor="let perfil of listProfiles" [value]="perfil">{{perfil.nome}}</mat-option>
+        </mat-select>
+        <mat-error>Seleção obrigatória</mat-error>
+      </mat-form-field>
+
+    <button [disabled]="!profileSelected" mat-raised-button style="margin-left: 20px"
+        (click)="addProfiles(profileSelected)">
+        <mat-icon>add</mat-icon>
+    </button>
+    </form>
+
+    <table mat-table [dataSource]="dataSourceProfile" class="mat-elevation-z8">
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let profileSelected">{{ profileSelected.id }}</td>
+        </ng-container>
+  
+        <!-- Nome Column -->
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef>Perfil</th>
+          <td mat-cell *matCellDef="let profileSelected">{{ profileSelected.nome }}</td>
+        </ng-container> 
+
+        <!-- Ações da Tabela -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Ação</th>
+            <td mat-cell *matCellDef="let item">
+                <div fxLayoutAlign="center">
+                    <button mat-icon-button aria-label="Excluir" style="color: red;">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
 
     <mat-card-actions>
-        <div class="buttons">
-            <button class="button" mat-raised-button (click)="onSave()">Salvar</button>
-            <button mat-raised-button routerLink="/usuarios">Cancelar</button>
-        </div>
+      <div class="buttons">
+        <button class="button" mat-raised-button (click)="onSave()">
+          Salvar
+        </button>
+        <button mat-raised-button routerLink="/usuarios">Cancelar</button>
+      </div>
     </mat-card-actions>
+  </mat-card-content>
 </mat-card>
 
 <!-- [disabled]="!formUser.valid" -->
-    

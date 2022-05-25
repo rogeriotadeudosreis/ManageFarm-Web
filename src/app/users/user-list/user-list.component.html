@@ -49,6 +49,7 @@
 
       <!-- ações da tabela -->
       <ng-container matColumnDef="actions">
+
         <mat-header-cell *matHeaderCellDef>
           <button mat-mini-fab color="primary" aria-label="Adicionar usuário">
             <mat-icon routerLink="/new">add</mat-icon>
@@ -75,12 +76,12 @@
     </table>
   </div>
 
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
+  <!-- <mat-paginator
+    [pageSizeOptions]="[50, 75, 100]"
     showFirstLastButtons
     aria-label="Select page of periodic users"
   >
-  </mat-paginator>
+  </mat-paginator> -->
 
   <ng-template #loading>
     <div class="loading-spinner">

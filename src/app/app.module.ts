@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
+import { SharedModule } from './shared/shared.module';
 import { UsersRoutingModule } from './users/users-routing.module';
 import { UsersModule } from './users/users.module';
 
@@ -24,6 +25,7 @@ import { UsersModule } from './users/users.module';
     HttpClientModule,
     MatIconModule,
     UsersModule,
+    SharedModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

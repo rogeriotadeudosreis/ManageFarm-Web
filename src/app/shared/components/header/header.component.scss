@@ -1,0 +1,43 @@
+.header {
+  flex: 1 1 auto;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  background-color: #2e7d32;
+}
+
+.header a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header .logo {
+  max-height: 32px;
+}
+
+.header .title-group {
+  padding-left: 15px;
+}
+
+.header .title-group i {
+  margin-right: 5px;
+}
+
+.title {
+  color: white;
+}
+
+.logout {
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout {
+  background-color: yellow;
+}
+
+.material-icons {
+
+}

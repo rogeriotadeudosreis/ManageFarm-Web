@@ -15,9 +15,21 @@ import { User } from './../../models/user';
 })
 export class UserFormComponent implements OnInit {
   formUser: FormGroup;
-  dataSourceProfiles = new MatTableDataSource<Perfil[]>([]);
   profileArraySelected: Perfil[] = [];
   profileSelected: any;
+  dataSourceProfile = new MatTableDataSource<Perfil>([]);
+
+  listProfiles: Perfil[] = [
+    {id: 1, nome: 'Administrador'},
+    {id: 2, nome: 'Cliente'},
+    {id: 3, nome: 'Usuário'}
+  ]
+
+  displayedColumns = [
+    'id',
+    'nome',
+    'actions'
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,6 +53,7 @@ export class UserFormComponent implements OnInit {
   addProfiles(perfil: any): void {
     if (this.profileSelected != undefined && this.profileSelected !== '') {
       this.profileArraySelected.push(this.profileSelected);
+      this.dataSourceProfile = new MatTableDataSource(this.profileArraySelected);
     }
     this.profileSelected = "Selecione o Perfil do Usuário"
   }

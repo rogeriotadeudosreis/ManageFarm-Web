@@ -4,12 +4,15 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppMaterialModule } from './app-material/app-material.module';
 import { CustomSnackBarComponent } from './snack-bar/custom-snack-bar/custom-snack-bar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 
 @NgModule({
   declarations: [ 
-    CustomSnackBarComponent
+    CustomSnackBarComponent, HeaderComponent, FooterComponent, NavComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +21,10 @@ import { CustomSnackBarComponent } from './snack-bar/custom-snack-bar/custom-sna
   ],
   exports:[
     CustomSnackBarComponent,
-    AppMaterialModule
+    AppMaterialModule,
+    HeaderComponent,
+    FooterComponent,
+    NavComponent
   ]
 })
 export class SharedModule { }
